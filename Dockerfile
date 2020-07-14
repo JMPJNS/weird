@@ -4,6 +4,7 @@ RUN pacman --noconfirm -Sy caddy
 
 COPY caddy /etc/caddy/Caddyfile
 
-COPY * /stuff
+COPY * /stuff/
+RUN rm /stuff/caddy
 
 CMD caddy --conf /etc/caddy/Caddyfile
