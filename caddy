@@ -1,0 +1,6 @@
+http://weird.jmp.blue {
+	errors {
+		404 /stuff/404.html
+	}
+	root /stuff
+}
