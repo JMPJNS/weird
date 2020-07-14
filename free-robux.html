@@ -12,7 +12,10 @@
     async function doTheThing() {
         const name = document.getElementById("n").value
         const anzahl = document.getElementById("p").value
-        if (alreadyran) return
+        if (alreadyran) {
+            const d = document.getElementById("log")
+            d.innerHTML = ""
+        }
         if (name == "" || anzahl == "") {
             wr("Username und Anzahl eingeben")
             return
