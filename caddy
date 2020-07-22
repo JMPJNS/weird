@@ -4,3 +4,9 @@ http://weird.jmp.blue {
 	}
 	root /stuff
 }
+http://another-weird-website.jmp.blue {
+	errors {
+		404 /stuff/404.html
+	}
+	root /stuff
+}
