@@ -7,12 +7,6 @@ export default function App() {
   return (
     <Router>
       <main>
-        <meta property="og:title" content={meta.title}/>
-        <meta property="og:type" content={meta.type}/>
-        <meta property="og:url" content={meta.url}/>
-        <meta name='theme-color' content={meta["theme-color"]}/>
-        <meta property="og:image" content={meta.image}/>
-        <meta property="og:description" content={meta.description}/>
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
