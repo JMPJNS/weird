@@ -10,7 +10,9 @@ export default function App() {
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
+            <li><a href="https://github.com/JMPJNS/weird">Source Code</a></li>
             <li><a href="/free-robux">Robux Generator</a></li>
+            
           </ul>
         </nav>
 
