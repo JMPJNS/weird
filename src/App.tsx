@@ -35,15 +35,6 @@ export default class App extends React.Component {
   }
 }
 
-const meta = {
-  title: "JMP's Weird Stuff",
-  type: "website",
-  url: "https://weird.jmp.blue",
-  "theme-color": "#ff00ff",
-  image: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.catster.com%2Fwp-content%2Fuploads%2F2018%2F04%2FAngry-cat-sound-and-body-language.jpg&f=1&nofb=1",
-  description: "Stupid Random Projects"
-}
-
 const FakeText = () => (
   <p style={{color: "white"}}>No You</p>
 )
