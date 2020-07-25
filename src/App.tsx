@@ -1,27 +1,38 @@
 import React, { Fragment } from "react";
 import "./index.css"
-import FreeRobux from "./pages/free-robux";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import FreeRobux from "./pages/FreeRobux";
+import { NavLink, Route, BrowserRouter as Router } from "react-router-dom";
+import RealScribble from "./pages/RealScribble"
 
-export default function App() {
-  return (
-    <Router>
-      <main>
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="https://github.com/JMPJNS/weird">Source Code</a></li>
-            <li><a href="/free-robux">Robux Generator</a></li>
-            
-          </ul>
-        </nav>
+export default class App extends React.Component {
+  
+  constructor(props: {}) {
+    super(props)
+    this.state = {active: "Home"}
+  }
+  state: {active: string}
+  
+  render() {
+    return (
+      <Router>
+        <main>
+          <nav>
+            <NavLink className="nav-item" exact={true} to='/' activeStyle={{color: "red"}}>Home</NavLink>
+            <NavLink className="nav-item" exact={true} onClick={ (e) => window.open("https://github.com/JMPJNS/weird", "_blank")} to='/source' activeStyle={{color: "red"}}>Source Code</NavLink>
+            <NavLink className="nav-item" to='/free-robux' activeStyle={{color: "red"}}>Robux Generator</NavLink>
+            <NavLink className="nav-item" to='/real-scribble' activeStyle={{color: "red"}}>Real Scribble</NavLink>
+          </nav>
 
-        <Route path="/free-robux" component={FreeRobux} />
-        <Route exact path="/" component={FakeText} />
-        
-      </main>
-    </Router>
-  );
+          <div className="do-center">
+            <Route path="/free-robux" component={FreeRobux}/>
+            <Route path="/real-scribble" component={RealScribble}/>
+            <Route exact path="/" component={FakeText}/>
+          </div>
+
+        </main>
+      </Router>
+    );
+  }
 }
 
 const meta = {
@@ -34,5 +45,5 @@ const meta = {
 }
 
 const FakeText = () => (
-  <p>No You</p>
+  <p style={{color: "white"}}>No You</p>
 )

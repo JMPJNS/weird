@@ -7,5 +7,35 @@
 }
 
 .green {
-    color: green
+    color: #22ff22;
+}
+
+h1 {
+    color: white;
+}
+
+label {
+    color: gray;
+    padding: 5px;
+}
+
+input {
+    background-color: #181a1b;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #181a1b;
+    color: white;
+    border-radius: 4px;
+    width: 50px;
+}
+
+.log {
+    box-shadow: #22ff22;
+    text-shadow: #22ffff;
 }

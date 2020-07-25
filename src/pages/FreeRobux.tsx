@@ -1,5 +1,5 @@
 import React, {Fragment} from "react"
-import "../style/free-robux.css"
+import "../style/FreeRobux.css"
 
 export default class FreeRobux extends React.Component{
        
@@ -73,7 +73,7 @@ export default class FreeRobux extends React.Component{
         </label>
         <button onClick={this.doTheThing}>Run!</button>
         <hr/>
-        <div id="log">{this.printLog()}</div>
+        <div className="log" id="log">{this.printLog()}</div>
       </Fragment>
     )
   }
