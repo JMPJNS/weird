@@ -1,5 +1,6 @@
-import React, {Fragment} from "react"
-import "../style/FreeRobux.css"
+import React from "react"
+import styles from "../styles/FreeRobux.module.css"
+import Layout from "../components/layouts/layout"
 
 export default class FreeRobux extends React.Component{
        
@@ -39,7 +40,7 @@ export default class FreeRobux extends React.Component{
     const items = []
     
     for(const t of this.state.log) {
-      items.push(<Fragment><div className="green">{t}</div><br/></Fragment>)
+      items.push(<div className={styles.green}>{t}<br/></div>)
     }
     
     return (
@@ -61,8 +62,8 @@ export default class FreeRobux extends React.Component{
   
   render() {
     return (
-      <Fragment>
-        <h1>Welcome to <span className="rainbow">FREE ROBUX GENERATOR</span></h1>
+      <Layout>
+        <h1>Welcome to <span className={styles.rainbow}>FREE ROBUX GENERATOR</span></h1>
         <label>
             Name:
             <input value={this.state.name} onChange={(event) => this.setState({name: event.target.value})} type="text"/>
@@ -73,8 +74,8 @@ export default class FreeRobux extends React.Component{
         </label>
         <button onClick={this.doTheThing}>Run!</button>
         <hr/>
-        <div className="log" id="log">{this.printLog()}</div>
-      </Fragment>
+        <div className={styles.log} id="log">{this.printLog()}</div>
+      </Layout>
     )
   }
 }

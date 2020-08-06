@@ -1,8 +1,9 @@
 ﻿import React, {Fragment, useState} from "react"
-import "../style/RealScribble.css"
+import styles from "../styles/RealScribble.module.css"
 import {useMouseWheel, useWindowSize} from "react-use"
+import Layout from "../components/layouts/layout"
 
-export default function(props: {}) {
+export default function RealScribble(props: {}) {
 	
 	function doTest() {
 		console.log(canvasRef)
@@ -93,7 +94,7 @@ export default function(props: {}) {
 	}, [context, color, strokeSize, mouseWheel, windowSize]);
 	
 	return (
-		<Fragment>
+		<Layout>
 			<div>
 				<p style={{color: "white"}}>Definetly Not Fake Scribble {mouseWheel}</p>
 				<input style={{color: color}} onChange={(event) => setColor(event.target.value)} value={color} />
@@ -101,7 +102,7 @@ export default function(props: {}) {
 				<button onClick={hitDebugger}>Debug</button>
 			</div>
 			<canvas
-				className="canvas_container"
+				className={styles.canvas_container}
 				id="canvas"
 				ref={canvasRef}
 				width={500}
@@ -111,7 +112,7 @@ export default function(props: {}) {
 					marginTop: 10
 				}}
 			/>
-		</Fragment>
+		</Layout>
 	)
 }
 

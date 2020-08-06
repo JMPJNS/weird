@@ -1,0 +1,68 @@
+h1 {
+    color: white;
+}
+
+label {
+    color: gray;
+    padding: 5px;
+}
+
+input {
+    background-color: #181a1b;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #181a1b;
+    color: white;
+    border-radius: 4px;
+    width: 50px;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #181a1b;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.do-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 80%;
+}
+
+nav {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-item {
+    display: block;
+    color: white;
+    width: auto;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    background-color: #111;
+}
