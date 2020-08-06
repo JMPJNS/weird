@@ -1,14 +1,9 @@
-﻿import React, {Fragment, useState} from "react"
+﻿import React, {useState} from "react"
 import styles from "../styles/RealScribble.module.css"
 import {useMouseWheel, useWindowSize} from "react-use"
 import Layout from "../components/layouts/Layout"
 
-export default function RealScribble(props: {}) {
-	
-	function doTest() {
-		console.log(canvasRef)
-	}
-
+export default function RealScribble() {
 	const canvasRef = React.useRef<HTMLCanvasElement>(null);
 	const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
 	
@@ -26,11 +21,11 @@ export default function RealScribble(props: {}) {
 		let mouseDown: boolean = false;
 		
 
-		function handleMouseUp(evt: MouseEvent) {
+		function handleMouseUp(_evt: MouseEvent) {
 			mouseDown = false;
 		}
 
-		function handleMouseDown(evt: MouseEvent) {
+		function handleMouseDown(_evt: MouseEvent) {
 			mouseDown = true;
 		}
 		
