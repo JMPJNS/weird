@@ -1,7 +1,7 @@
 ﻿import React, {Fragment, useState} from "react"
 import styles from "../styles/RealScribble.module.css"
 import {useMouseWheel, useWindowSize} from "react-use"
-import Layout from "../components/layouts/layout"
+import Layout from "../components/layouts/Layout"
 
 export default function RealScribble(props: {}) {
 	

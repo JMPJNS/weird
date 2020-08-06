@@ -1,7 +1,7 @@
-﻿import React, {Fragment, useState} from "react"
-import Layout from "../components/layouts/layout"
+﻿import React, {useState} from "react"
+import Layout from "../components/layouts/Layout"
 
-export default function NovelReader(props: {}) {
+export default function NovelReader() {
 
 	const [novelUrl, setNovelUrl] = useState("")
 	
