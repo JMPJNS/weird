@@ -1,21 +1,28 @@
 import express from 'express'
 import next from "next"
+import Mongo from "./db"
 
 const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+
+const connectionString = process.env.DB_STRING || "mongodb://localhost:27017/weird"
+
+
 export type CustomRequest = express.Request & {
-	test: string
+	mongo: typeof Mongo
 }
 
-app.prepare().then(() => {
+app.prepare().then(async () => {
 	const server = express()
+	
+	await Mongo.ConnectAsync(connectionString)
 
 	server.all('*', (req , res) => {
 		const customReq = req as CustomRequest
-		customReq.test = "asdf"
+		customReq.mongo = Mongo
 		return handle(customReq, res)
 	})
 

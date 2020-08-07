@@ -1,4 +1,5 @@
 ﻿# Random Stuff
 
 ## Env
-- DBSTRING: Mongodb Connection String
+- DB_STRING: Mongodb Connection String
+- JWT_SECRET: JWT Secret
