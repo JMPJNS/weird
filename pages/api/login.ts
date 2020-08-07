@@ -1,24 +1,49 @@
+import {sign} from "jsonwebtoken"
 import {NextApiResponse} from "next"
+import JwtClaim from "../../models/JwtClaim"
 import {User, getUserModel} from "../../models/User"
 import {CustomRequest} from "../../server"
+import {compare} from "bcrypt"
 
 
 export default async function login(req: CustomRequest, res: NextApiResponse) {
 
-	const user: User = req.body.credentials
-	
-	const userModel = getUserModel(req.mongo.Connection)
-
-	const foundUser = await userModel.findOne({Email: user.Email}, "-Password")
-
-	if (foundUser) {
+	if (req.method != "POST") {
 		res.statusCode = 400
-		res.json({message: "User with that Email Already Exists"})
+		res.json({message: "Only POST Method supported"})
 		return
 	}
 
-	const { _id: id } = await userModel.create(user);
+	const user: User = req.body
+	
+	const userModel = getUserModel(req.mongo.Connection)
+
+	// const foundUser = await userModel.findOne({Email: user.Email}, "-Password")
+	const foundUser = await userModel.findOne({Email: user.Email})
+
+	if (!foundUser) {
+		res.statusCode = 404
+		res.json({message: "User Not Found"})
+		return
+	}
+	
+	const passwordOk = await compare(user.Password, foundUser.Password!)
+
+	if (!passwordOk) {
+		res.statusCode = 403
+		res.json({message: "Invalid Password"})
+		return
+	}
+
+	const claim = <JwtClaim>{}
+
+	claim.Name = user.Name!
+	claim.Email = user.Email
+	claim.Permissions = user.Permissions!
+	claim.sub = foundUser._id
+
+	const jwt = sign(claim, req.jwtSecret)
 
 	res.statusCode = 200
-	res.json({ Name: user.Name, ID: id })
+	res.json({ authToken: jwt })
 }

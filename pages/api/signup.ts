@@ -1,8 +1,9 @@
 import {NextApiResponse} from "next"
+import JwtClaim from "../../models/JwtClaim"
 import {getUserModel, User} from "../../models/User"
 import {CustomRequest} from "../../server"
 import {hash} from "bcrypt"
-
+import {sign} from "jsonwebtoken"
 
 export default async function signup(req: CustomRequest, res: NextApiResponse) {
 	if (req.method != "POST") {
@@ -28,6 +29,15 @@ export default async function signup(req: CustomRequest, res: NextApiResponse) {
 
 	const { _id: id } = await userModel.create(user);
 	
+	const claim = <JwtClaim>{}
+
+	claim.Name = user.Name!
+	claim.Email = user.Email
+	claim.Permissions = user.Permissions!
+	claim.sub = id
+	
+	const jwt = sign(claim, req.jwtSecret)
+	
 	res.statusCode = 200
-	res.json({ Name: user.Name, ID: id })
+	res.json({authToken: jwt})
 }

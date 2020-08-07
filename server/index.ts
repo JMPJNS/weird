@@ -8,11 +8,13 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 
+const jwtSecret = process.env.JWT_SECRET || "SuperSecret"
 const connectionString = process.env.DB_STRING || "mongodb://localhost:27017/weird"
 
 
 export type CustomRequest = express.Request & {
 	mongo: typeof Mongo
+	jwtSecret: string
 }
 
 app.prepare().then(async () => {
@@ -23,6 +25,7 @@ app.prepare().then(async () => {
 	server.all('*', (req , res) => {
 		const customReq = req as CustomRequest
 		customReq.mongo = Mongo
+		customReq.jwtSecret = jwtSecret
 		return handle(customReq, res)
 	})
 
