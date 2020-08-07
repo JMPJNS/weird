@@ -4,8 +4,8 @@
  */
 import express from "express"
 import {NextApiHandler, NextApiRequest, NextApiResponse} from "next"
-import JwtClaim from "../../models/JwtClaim"
-import {User} from "../../models/User"
+import JwtClaim from "../../models/jwt-claim"
+import {User} from "../../models/user"
 import Mongo from "../db"
 import {CustomRequest} from "../index"
 import {verify, VerifyErrors} from "jsonwebtoken"

@@ -1,11 +1,11 @@
 import cookie from "cookie"
 import {NextApiResponse} from "next"
-import JwtClaim from "../../models/JwtClaim"
-import {getUserModel, User} from "../../models/User"
+import JwtClaim from "../../models/jwt-claim"
+import {getUserModel, User} from "../../models/user"
 import {CustomRequest} from "../../server"
 import {hash} from "bcrypt"
 import {sign} from "jsonwebtoken"
-import {getCurrentUser} from "./currentUser"
+import {getCurrentUser} from "./current-user"
 
 export default async function signup(req: CustomRequest, res: NextApiResponse) {
 	if (req.method != "POST") {

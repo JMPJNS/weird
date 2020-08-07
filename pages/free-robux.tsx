@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "../styles/FreeRobux.module.css"
-import Layout from "../components/layouts/Layout"
+import Layout from "../components/layouts/layout"
 
 export default class FreeRobux extends React.Component{
        

@@ -1,6 +1,6 @@
 import mongoose, {Connection} from 'mongoose'
-import Model from "./Model"
-import {Permission} from "./Permission"
+import Model from "./model"
+import {Permission} from "./permission"
 import {prop, getModelForClass} from "@typegoose/typegoose"
 
 export class User extends Model {

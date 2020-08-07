@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import {NextApiResponse} from "next"
-import {getUserModel, PartialUser} from "../../models/User"
+import {getUserModel, PartialUser} from "../../models/user"
 import {CustomRequest} from "../../server"
 import authenticated from "../../server/middlewares/authenticated"
 

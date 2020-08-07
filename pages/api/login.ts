@@ -1,12 +1,12 @@
 import {sign} from "jsonwebtoken"
 import {NextApiResponse} from "next"
-import JwtClaim from "../../models/JwtClaim"
-import {User, getUserModel} from "../../models/User"
+import JwtClaim from "../../models/jwt-claim"
+import {User, getUserModel} from "../../models/user"
 import {CustomRequest} from "../../server"
 import {compare} from "bcrypt"
 
 import cookie from "cookie"
-import {getCurrentUser} from "./currentUser"
+import {getCurrentUser} from "./current-user"
 
 
 export default async function login(req: CustomRequest, res: NextApiResponse) {

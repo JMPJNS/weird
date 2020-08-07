@@ -1,7 +1,7 @@
 ﻿import React, {useState} from "react"
 import styles from "../styles/RealScribble.module.css"
 import {useMouseWheel, useWindowSize} from "react-use"
-import Layout from "../components/layouts/Layout"
+import Layout from "../components/layouts/layout"
 
 export default function RealScribble() {
 	const canvasRef = React.useRef<HTMLCanvasElement>(null);

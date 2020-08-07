@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import Model from "../models/Model"
+import Model from "../models/model"
 
 export default class Mongo {
 		
