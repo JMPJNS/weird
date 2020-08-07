@@ -5,6 +5,7 @@ import {getUserModel, User} from "../../models/User"
 import {CustomRequest} from "../../server"
 import {hash} from "bcrypt"
 import {sign} from "jsonwebtoken"
+import {getCurrentUser} from "./currentUser"
 
 export default async function signup(req: CustomRequest, res: NextApiResponse) {
 	if (req.method != "POST") {
@@ -16,7 +17,7 @@ export default async function signup(req: CustomRequest, res: NextApiResponse) {
 	
 	const user: User = req.body
 	
-	const foundUser = await userModel.count({Email: user.Email})
+	const foundUser = await userModel.countDocuments({Email: user.Email})
 	
 	if (foundUser) {
 		res.statusCode = 400
@@ -46,7 +47,7 @@ export default async function signup(req: CustomRequest, res: NextApiResponse) {
 		path: "/",
 		maxAge: 60*60*5
 	}))
-	
-	res.statusCode = 200
-	res.end("success")
+
+	req.userId = id
+	await getCurrentUser(req, res)
 }

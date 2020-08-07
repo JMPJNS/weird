@@ -6,6 +6,7 @@ import {CustomRequest} from "../../server"
 import {compare} from "bcrypt"
 
 import cookie from "cookie"
+import {getCurrentUser} from "./currentUser"
 
 
 export default async function login(req: CustomRequest, res: NextApiResponse) {
@@ -53,7 +54,7 @@ export default async function login(req: CustomRequest, res: NextApiResponse) {
 		path: "/",
 		maxAge: 60*60*5
 	}))
-
-	res.statusCode = 200
-	res.end("success")
+	
+	req.userId = foundUser._id
+	await getCurrentUser(req, res)
 }
