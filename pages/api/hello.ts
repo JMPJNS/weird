@@ -6,5 +6,5 @@ import {CustomRequest} from "../../server"
 
 export default async function hello(req: CustomRequest, res: NextApiResponse) {
   res.statusCode = 200
-  res.json({ name: 'John Doe', stuff: req.test })
+  res.json({ name: 'John Doe', stuff: "no" })
 }
