@@ -5,6 +5,8 @@ import {User, getUserModel} from "../../models/User"
 import {CustomRequest} from "../../server"
 import {compare} from "bcrypt"
 
+import cookie from "cookie"
+
 
 export default async function login(req: CustomRequest, res: NextApiResponse) {
 
@@ -42,8 +44,16 @@ export default async function login(req: CustomRequest, res: NextApiResponse) {
 	claim.Permissions = user.Permissions!
 	claim.sub = foundUser._id
 
-	const jwt = sign(claim, req.jwtSecret)
+	const jwt = sign(claim, req.jwtSecret, {expiresIn: "5d"})
+	
+	res.setHeader("Set-Cookie", cookie.serialize("auth", jwt, {
+		httpOnly: true,
+		secure: process.env.NODE_ENV !== "development",
+		sameSite: true,
+		path: "/",
+		maxAge: 60*60*5
+	}))
 
 	res.statusCode = 200
-	res.json({ authToken: jwt })
+	res.end("success")
 }

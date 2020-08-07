@@ -13,11 +13,11 @@ import {verify} from "jsonwebtoken"
 export type CustomApiHandler<T = any> = (req: CustomRequest, res: NextApiResponse<T>) => void | Promise<void>
 
 const authenticated = (fn: CustomApiHandler) => async (req: CustomRequest, res: NextApiResponse) => {
-	if (!req.headers.authorization) {
+	if (!req.cookies.auth) {
 		await un()
 		return
 	}
-	verify(req.headers.authorization, req.jwtSecret, async function (err, decoded) {
+	verify(req.cookies.auth, req.jwtSecret, async function (err, decoded) {
 		if (!err && decoded) {
 			return fn(req, res)
 		}

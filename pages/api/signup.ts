@@ -1,3 +1,4 @@
+import cookie from "cookie"
 import {NextApiResponse} from "next"
 import JwtClaim from "../../models/JwtClaim"
 import {getUserModel, User} from "../../models/User"
@@ -35,9 +36,17 @@ export default async function signup(req: CustomRequest, res: NextApiResponse) {
 	claim.Email = user.Email
 	claim.Permissions = user.Permissions!
 	claim.sub = id
-	
-	const jwt = sign(claim, req.jwtSecret)
+
+	const jwt = sign(claim, req.jwtSecret, {expiresIn: "5d"})
+
+	res.setHeader("Set-Cookie", cookie.serialize("auth", jwt, {
+		httpOnly: true,
+		secure: process.env.NODE_ENV !== "development",
+		sameSite: true,
+		path: "/",
+		maxAge: 60*60*5
+	}))
 	
 	res.statusCode = 200
-	res.json({authToken: jwt})
+	res.end("success")
 }
