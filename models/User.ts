@@ -10,6 +10,13 @@ export class User extends Model {
 	@prop() public Permissions?: Permission[]
 }
 
+export interface PartialUser {
+	Id: string
+	Name: string
+	Email: string
+	Permissions: Permission[]
+}
+
 export function getUserModel(conn: mongoose.Connection) {
 	return getModelForClass(User, {existingConnection: conn})
 }

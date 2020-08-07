@@ -15,6 +15,7 @@ const connectionString = process.env.DB_STRING || "mongodb://localhost:27017/wei
 export type CustomRequest = express.Request & {
 	mongo: typeof Mongo
 	jwtSecret: string
+	userId?: string
 }
 
 app.prepare().then(async () => {

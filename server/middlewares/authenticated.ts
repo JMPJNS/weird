@@ -4,6 +4,7 @@
  */
 import express from "express"
 import {NextApiHandler, NextApiRequest, NextApiResponse} from "next"
+import JwtClaim from "../../models/JwtClaim"
 import {User} from "../../models/User"
 import Mongo from "../db"
 import {CustomRequest} from "../index"
@@ -19,6 +20,8 @@ const authenticated = (fn: CustomApiHandler) => async (req: CustomRequest, res: 
 	}
 	verify(req.cookies.auth, req.jwtSecret, async function (err, decoded) {
 		if (!err && decoded) {
+			const jwt = decoded as JwtClaim
+			req.userId = jwt.sub
 			return fn(req, res)
 		}
 		await un()
