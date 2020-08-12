@@ -15,9 +15,9 @@ const Layout = (props: any) => (
         <nav>
             <Link href='/'><button className="nav-item">Home</button></Link>
             <button className="nav-item" onClick={ () => window.open("https://github.com/JMPJNS/weird", "_blank")}>Source Code</button>
-            <Link href='/FreeRobux'><button className="nav-item">Robux Generator</button></Link>
-            <Link href='/RealScribble'><button className="nav-item">Real Scribble</button></Link>
-            <Link href='/NovelReader'><button className="nav-item">Novel Reader</button></Link>
+            <Link href='/free-robux'><button className="nav-item">Robux Generator</button></Link>
+            <Link href='/real-scribble'><button className="nav-item">Real Scribble</button></Link>
+            <Link href='/novel-reader'><button className="nav-item">Novel Reader</button></Link>
           </nav>
 
         <div className="do-center">
