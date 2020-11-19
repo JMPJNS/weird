@@ -18,6 +18,7 @@ const Layout = (props: any) => (
             <Link href='/free-robux'><button className="nav-item">Robux Generator</button></Link>
             <Link href='/real-scribble'><button className="nav-item">Real Scribble</button></Link>
             <Link href='/novel-reader'><button className="nav-item">Novel Reader</button></Link>
+            <Link href='/genshin/artifact-rater'><button className="nav-item">Genshin Artifact Rater</button></Link>
           </nav>
 
         <div className="do-center">

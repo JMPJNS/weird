@@ -1,9 +1,13 @@
+* {
+    color: white;
+}
+
 h1 {
     color: white;
 }
 
 label {
-    color: gray;
+    color: whitesmoke;
     padding: 5px;
 }
 
