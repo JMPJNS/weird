@@ -2,7 +2,7 @@ import axios, {AxiosResponse, Method} from "axios"
 import {CustomRequest} from "../server/index"
 import FormData from "form-data"
 
-export default async function uploadToCDN(req: CustomRequest, filename: string, contentType: string, file: File) {
+export default async function uploadToCDN(req: CustomRequest, contentType: string, file: File) {
 
     console.log("uploading to cdn: ", req.apiKeys.CDN_API_KEY)
     
