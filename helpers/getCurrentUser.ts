@@ -5,7 +5,7 @@ import {CustomRequest} from "../server";
 import JwtClaim from "../models/jwt-claim";
 
 export default function getCurrentUser(ctx: NextPageContext): PartialUser | null {
-	if (!ctx) return null
+	if (!ctx || !ctx?.req) return null
 
 	const c = (ctx.req as CustomRequest)?.cookies
 
