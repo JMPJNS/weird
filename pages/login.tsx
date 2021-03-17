@@ -8,7 +8,7 @@ import {PartialUser} from "../models/user";
 export default function Login({user}: {user?: PartialUser}) {
 	if (user) {
 		const us = JSON.stringify(user, null, 2)
-		return (<Layout>Already Logged in {us} , <a href="/logout">Logout</a></Layout>)
+		return (<Layout>Already Logged in , <a href="/logout">Logout</a></Layout>)
 	}
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
