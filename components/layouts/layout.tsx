@@ -1,7 +1,12 @@
 import Head from "next/head"
 import Link from 'next/link'
+import {PartialUser} from "../../models/user";
+import {NextPageContext} from "next";
+import getCurrentUser from "../../helpers/getCurrentUser";
 
-const Layout = (props: any) => (
+const Layout = (props: {user?: PartialUser, children: any}) => {
+  console.log(props.user)
+  return (
     <div>
         <Head>
           <title>Weird Flex</title>
@@ -26,6 +31,11 @@ const Layout = (props: any) => (
         </div>
         
     </div>
-)
+)}
+
+export async function getServerSideProps(ctx: NextPageContext) {
+  const user = getCurrentUser(ctx)
+  return({props: {user}})
+}
 
 export default Layout

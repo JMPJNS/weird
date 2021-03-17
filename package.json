@@ -24,7 +24,8 @@
     "next": "^10.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-use": "^15.3.3"
+    "react-use": "^15.3.3",
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
