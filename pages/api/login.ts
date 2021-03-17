@@ -40,21 +40,21 @@ export default async function login(req: CustomRequest, res: NextApiResponse) {
 
 	const claim = <JwtClaim>{}
 
-	claim.Name = user.Name!
-	claim.Email = user.Email
-	claim.Permissions = user.Permissions!
+	claim.Name = foundUser.Name!
+	claim.Email = foundUser.Email
+	claim.Permissions = foundUser.Permissions!
 	claim.sub = foundUser._id
 
 	const jwt = sign(claim, req.jwtSecret, {expiresIn: "5d"})
 	
 	res.setHeader("Set-Cookie", cookie.serialize("auth", jwt, {
-		httpOnly: true,
+		httpOnly: false,
 		secure: process.env.NODE_ENV !== "development",
 		sameSite: true,
 		path: "/",
 		maxAge: 60*60*5
 	}))
 	
-	req.userId = foundUser._id
+	req.jwtClaim = claim
 	await getCurrentUser(req, res)
 }

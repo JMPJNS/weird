@@ -53,6 +53,7 @@ export default class FreeRobux extends React.Component{
   wr(text: string) {
     const newLog = this.state.log
     newLog.push(text)
+
     this.setState({log: newLog})
   }
 

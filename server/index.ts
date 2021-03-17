@@ -1,6 +1,10 @@
 import express from 'express'
 import next from "next"
 import Mongo from "./db"
+import {PartialUser} from "../models/user"
+import {verify, VerifyErrors} from "jsonwebtoken"
+import JwtClaim from "../models/jwt-claim"
+import cookieParser from "cookie-parser"
 
 const port = process.env.PORT || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -19,12 +23,13 @@ class ApiKeys {
 export type CustomRequest = express.Request & {
 	mongo: typeof Mongo
 	jwtSecret: string
-	userId?: string
+	jwtClaim?: JwtClaim
 	apiKeys: ApiKeys
 }
 
 app.prepare().then(async () => {
 	const server = express()
+	server.use(cookieParser())
 	
 	await Mongo.ConnectAsync(connectionString)
 
@@ -32,7 +37,15 @@ app.prepare().then(async () => {
 		const customReq = req as CustomRequest
 		customReq.mongo = Mongo
 		customReq.jwtSecret = jwtSecret
-		customReq.apiKeys = new ApiKeys();
+		customReq.apiKeys = new ApiKeys()
+
+		if (customReq.cookies?.auth) {
+			const user = verify(customReq.cookies.auth, customReq.jwtSecret) as JwtClaim
+			if (user) {
+				customReq.jwtClaim = user
+			}
+		}
+
 		return handle(customReq, res)
 	})
 

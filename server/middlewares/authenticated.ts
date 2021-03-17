@@ -21,7 +21,7 @@ const authenticated = (fn: CustomApiHandler) => async (req: CustomRequest, res: 
 	verify(req.cookies.auth, req.jwtSecret, async function (err: VerifyErrors | null, decoded: object | undefined) {
 		if (!err && decoded) {
 			const jwt = decoded as JwtClaim
-			req.userId = jwt.sub
+			req.jwtClaim = jwt
 			return fn(req, res)
 		}
 		await un()

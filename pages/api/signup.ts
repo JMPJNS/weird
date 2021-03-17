@@ -41,13 +41,13 @@ export default async function signup(req: CustomRequest, res: NextApiResponse) {
 	const jwt = sign(claim, req.jwtSecret, {expiresIn: "5d"})
 
 	res.setHeader("Set-Cookie", cookie.serialize("auth", jwt, {
-		httpOnly: true,
+		httpOnly: false,
 		secure: process.env.NODE_ENV !== "development",
 		sameSite: true,
 		path: "/",
 		maxAge: 60*60*5
 	}))
 
-	req.userId = id
+	req.jwtClaim = claim
 	await getCurrentUser(req, res)
 }

@@ -7,7 +7,7 @@ import authenticated from "../../server/middlewares/authenticated"
 
 export async function getCurrentUser(req: CustomRequest, res: NextApiResponse) {
   res.statusCode = 200
-  const foundUser = await getUserModel(req.mongo.Connection).findById(req.userId)
+  const foundUser = await getUserModel(req.mongo.Connection).findById(req.jwtClaim?.sub)
   if (!foundUser) {
     res.statusCode = 404
     res.end("User Not Found")
