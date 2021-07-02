@@ -29,11 +29,14 @@ const Layout = (props: {user?: PartialUser, children: any}) => {
             <li>
               <Link href='/real-scribble'><button className="nav-item">Real Scribble</button></Link>
             </li>
-            <li>
+            {/* <li>
               <Link href='/novel-reader'><button className="nav-item">Novel Reader</button></Link>
             </li>
             <li>
               <Link href='/genshin/artifact-rater'><button className="nav-item">Genshin Artifact Rater</button></Link>
+            </li> */}
+            <li>
+              <Link href='/3d'><button className="nav-item">3D</button></Link>
             </li>
           </ul>
         </nav>
