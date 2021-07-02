@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import Link from 'next/link'
 import Layout from "../components/layouts/layout"
 import doFetch from "../helpers/do-fetch"
 import getCurrentUser from "../helpers/getCurrentUser";
@@ -11,9 +12,9 @@ export default function Signup({user}: {user?: PartialUser}) {
 	const [password, setPassword] = useState("")
 	const [username, setUsername] = useState("")
 	const [response, setResponse] = useState("")
-	
+
 	if (user) {
-		return (<Layout>Already Logged in, <a href="/logout">Logout</a></Layout>)
+		return (<Layout>Already Logged in, <Link href="/logout">Logout</Link></Layout>)
 	}
 	
 	const signup = async () => {

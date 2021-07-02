@@ -18,6 +18,7 @@ export default function RealScribble() {
 	}
 
 	React.useEffect(() => {
+		const cr = canvasRef;
 		let mouseDown: boolean = false;
 		
 
@@ -66,23 +67,23 @@ export default function RealScribble() {
 			};
 		}
 
-		if (canvasRef.current) {
-			const renderCtx = canvasRef.current.getContext('2d');
+		if (cr.current) {
+			const renderCtx = cr.current.getContext('2d');
 
 			if (renderCtx) {
-				canvasRef.current.addEventListener('mousedown', handleMouseDown);
-				canvasRef.current.addEventListener('mouseup', handleMouseUp);
-				canvasRef.current.addEventListener('mousemove', handleMouseMove);
+				cr.current.addEventListener('mousedown', handleMouseDown);
+				cr.current.addEventListener('mouseup', handleMouseUp);
+				cr.current.addEventListener('mousemove', handleMouseMove);
 
 				setContext(renderCtx);
 			}
 		}
 
 		return function cleanup() {
-			if (canvasRef.current) {
-				canvasRef.current.removeEventListener('mousedown', handleMouseDown);
-				canvasRef.current.removeEventListener('mouseup', handleMouseUp);
-				canvasRef.current.removeEventListener('mousemove', handleMouseMove);
+			if (cr.current) {
+				cr.current.removeEventListener('mousedown', handleMouseDown);
+				cr.current.removeEventListener('mouseup', handleMouseUp);
+				cr.current.removeEventListener('mousemove', handleMouseMove);
 			}
 		}
 		

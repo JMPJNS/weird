@@ -59,6 +59,10 @@ nav {
     list-style-type: none;
 }
 
+.no-list-style {
+    list-style-type: none;
+}
+
 .nav-item {
     display: block;
     color: white;
