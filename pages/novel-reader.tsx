@@ -11,8 +11,8 @@ export default function NovelReader() {
 
 	return (
 		<Layout>
-			<p>Novel Stuff</p>
-			
+			<h1>NOT IMPLEMENTED</h1>
+			<p>Novel Stuff</p>			
 			<label>Boxnovel URL</label>
 			<input onChange={(event) => setNovelUrl(event.target.value)} value={novelUrl} />
 			<button onClick={doTheThing}>Show Novel</button>

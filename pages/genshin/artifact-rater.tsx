@@ -30,6 +30,7 @@ export default function ArtifactRater() {
 
   return (
     <Layout>
+			<h1>NOT IMPLEMENTED</h1>
 			<div>Upload Image</div>
 			<input onChange={setImage} type="file"></input>
 			<input type="submit" onClick={uploadImage}></input>

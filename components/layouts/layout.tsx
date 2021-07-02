@@ -18,13 +18,25 @@ const Layout = (props: {user?: PartialUser, children: any}) => {
           <meta property="og:description" content="Random Projects"/>
         </Head>
         <nav>
-            <Link href='/'><button className="nav-item">Home</button></Link>
-            <button className="nav-item" onClick={ () => window.open("https://github.com/JMPJNS/weird", "_blank")}>Source Code</button>
-            <Link href='/free-robux'><button className="nav-item">Robux Generator</button></Link>
-            <Link href='/real-scribble'><button className="nav-item">Real Scribble</button></Link>
-            <Link href='/novel-reader'><button className="nav-item">Novel Reader</button></Link>
-            <Link href='/genshin/artifact-rater'><button className="nav-item">Genshin Artifact Rater</button></Link>
-          </nav>
+          <ul className="nav-list">
+            <li>
+              <Link href='/'><button className="nav-item">Home</button></Link>
+            </li>
+            <li><button className="nav-item" onClick={ () => window.open("https://github.com/JMPJNS/weird", "_blank")}>Source Code</button></li>
+            <li>
+              <Link href='/free-robux'><button className="nav-item">Robux Generator</button></Link>
+            </li>
+            <li>
+              <Link href='/real-scribble'><button className="nav-item">Real Scribble</button></Link>
+            </li>
+            <li>
+              <Link href='/novel-reader'><button className="nav-item">Novel Reader</button></Link>
+            </li>
+            <li>
+              <Link href='/genshin/artifact-rater'><button className="nav-item">Genshin Artifact Rater</button></Link>
+            </li>
+          </ul>
+        </nav>
 
         <div className="do-center">
             {props.children}

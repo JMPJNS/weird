@@ -7,14 +7,14 @@ import Login from "./login";
 import {PartialUser} from "../models/user";
 
 export default function Signup({user}: {user?: PartialUser}) {
-	if (user) {
-		return (<Layout>Already Logged in, <a href="/logout">Logout</a></Layout>)
-	}
-
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const [username, setUsername] = useState("")
 	const [response, setResponse] = useState("")
+	
+	if (user) {
+		return (<Layout>Already Logged in, <a href="/logout">Logout</a></Layout>)
+	}
 	
 	const signup = async () => {
 		const res = await doFetch("/api/signup", "post", {Email: email, Password: password, Name: username})

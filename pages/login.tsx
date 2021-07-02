@@ -6,14 +6,14 @@ import {NextPageContext} from "next";
 import {PartialUser} from "../models/user";
 
 export default function Login({user}: {user?: PartialUser}) {
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+	const [response, setResponse] = useState("")
+	
 	if (user) {
 		const us = JSON.stringify(user, null, 2)
 		return (<Layout>Already Logged in , <a href="/logout">Logout</a></Layout>)
 	}
-	const [email, setEmail] = useState("")
-	const [password, setPassword] = useState("")
-	const [response, setResponse] = useState("")
-
 	
 	const login = async () => {
 		const res = await doFetch("/api/login", "post", {Email: email, Password: password})
